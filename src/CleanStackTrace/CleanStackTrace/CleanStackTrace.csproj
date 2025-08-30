@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Version>0.0.1</Version>
+		<PackageId>CleanStackTrace</PackageId>
+		<Authors>Gabriele Cavallaro</Authors>
+		<Description>
+			A small utility library for cleaning and formatting .NET stack traces.
+			It removes noise from framework internals and provides a cleaner output
+			for logging and error messages. Ideal for debugging and error monitoring.
+		</Description>
+		<PackageTags>cleaning;stacktrace;exception;logging;utils</PackageTags>
+		<RepositoryUrl>https://github.com/gabriele-cavallaro/CleanStackTrace</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/gabriele-cavallaro/CleanStackTrace</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryType>git</RepositoryType>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<InvariantGlobalization>true</InvariantGlobalization>
+		<PackageIcon>icon.png</PackageIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\..\README.md" Pack="true" PackagePath="\" />
+		<None Include="icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+</Project>

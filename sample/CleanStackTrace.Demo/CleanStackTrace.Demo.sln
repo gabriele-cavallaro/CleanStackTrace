@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanStackTrace.Demo", "CleanStackTrace.Demo\CleanStackTrace.Demo.csproj", "{0CB355F8-52B8-4316-BD2B-59662E270E84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanStackTrace", "..\..\src\CleanStackTrace\CleanStackTrace\CleanStackTrace.csproj", "{2D8DEF0F-90CC-E5FF-FA86-A37E5318E687}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CB355F8-52B8-4316-BD2B-59662E270E84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CB355F8-52B8-4316-BD2B-59662E270E84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CB355F8-52B8-4316-BD2B-59662E270E84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CB355F8-52B8-4316-BD2B-59662E270E84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D8DEF0F-90CC-E5FF-FA86-A37E5318E687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D8DEF0F-90CC-E5FF-FA86-A37E5318E687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D8DEF0F-90CC-E5FF-FA86-A37E5318E687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D8DEF0F-90CC-E5FF-FA86-A37E5318E687}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {211B7A43-B7BD-4273-9B1F-AD531D046718}
+	EndGlobalSection
+EndGlobal
