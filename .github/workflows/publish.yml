@@ -1,0 +1,39 @@
+name: Publish to GitHub Packages and NuGet.org
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore ./src/CleanStackTrace/CleanStackTrace/CleanStackTrace.csproj
+      
+    - name: Build
+      run: dotnet build ./src/CleanStackTrace/CleanStackTrace/CleanStackTrace.csproj --configuration Release --no-restore
+      
+    - name: Pack
+      run: dotnet pack ./src/CleanStackTrace/CleanStackTrace/CleanStackTrace.csproj --configuration Release --no-build --output ./nupkg
+      
+    - name: Pack
+      run: dotnet pack ./src/CleanStackTrace/CleanStackTrace/CleanStackTrace.csproj --configuration Release --no-build --output ./nupkg
+      
+    - name: Publish to GitHub Packages
+      run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      
+    - name: Publish to NuGet.org
+      run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
