@@ -81,6 +81,48 @@ You can also obtain the colored version using the method `GetColoredCleanStackTr
  - methods are cyan;
  - and lines of code are yellow.
 
+![alt text](https://raw.githubusercontent.com/gabriele-cavallaro/CleanStackTrace/refs/heads/main/images/example-1.png "Title")
+
+You can also define your own transformers with the overload `GetColoredCleanStackTrace(linestransformers, linetransformers)`. See the following section for more information.
+
+---
+
+## ⚙️ Custom Clean Stack Traces
+The `GetColoredCleanStackTrace(linestransformers, linetransformers)` method allows you to create customized colored stack traces using your own transformers. This is useful when you want specific output. Example:
+
+```c#
+// Create your custom color transformers
+var customTransformers = new List<IStackTraceLineTransformer>
+{
+    new HighlightClassTransformer(),    // Blue for classes
+    new HighlightExceptionTransformer(), // Red for exceptions
+    new HighlightFunctionsTransformer()  // Cyan for methods
+};
+
+// Apply custom coloring
+string coloredStackTrace = exception.GetCleanStackTrace(
+    linesTransformers: TransformerCollections.StandardLinesTransformers,
+    lineTransformers: customTransformers
+);
+```
+
+This example colors the stack trace, indents it, but does not apply any alterations to the lines.
+
+You can create your own color transformer this way:
+
+```c#
+public class CustomHighlightTransformer : IStackTraceLineTransformer
+{
+    private const string ColorStart = "\u001b[35m"; // Purple
+    private const string ColorEnd = "\u001b[0m";
+
+    public string? Apply(string line)
+    {
+        // Highlight specific patterns in purple
+        return Regex.Replace(line, @"(Microsoft|System)", $"{ColorStart}$1{ColorEnd}");
+    }
+}
+```
 
 ---
 
