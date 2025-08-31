@@ -19,19 +19,34 @@ public static class ExceptionExtensions
     /// <returns>A cleaned stack trace with improved readability, removing compiler-generated methods and noise.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="exception"/> is null.</exception>
     public static string GetCleanStackTrace(this Exception exception)
-    {
-        IEnumerable<string> lines = exception.ToString()
-            .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+        => StackTraceCleaner.CleanStackTrace
+        (
+            exception,
+            TransformerCollections.StandardLinesTransformers,
+            TransformerCollections.StandardLineTransformers
+        );
 
-        foreach (IStackTraceLinesTransformer transformer in TransformerCollections.StandardLinesTransformers)
-            lines = transformer.Apply(lines);
-
-        foreach (IStackTraceLineTransformer transformer in TransformerCollections.StandardLineTransformers)
-            lines = lines.Select(line => transformer.Apply(line))
-                         .Where(line => line is not null)!;
-
-        return string.Join(Environment.NewLine, lines);
-    }
+    /// <summary>
+    /// Transforms an exception's stack trace using custom transformers.
+    /// Allows customized cleaning with user-defined transformation rules.
+    /// </summary>
+    /// <param name="exception">The exception to process. Cannot be null.</param>
+    /// <param name="linesTransformers">Custom multiline transformers to apply.</param>
+    /// <param name="lineTransformers">Custom single-line transformers to apply.</param>
+    /// <returns>A cleaned stack trace using the specified transformation rules.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="exception"/> is null.</exception>
+    public static string GetCleanStackTrace
+    (
+        Exception exception,
+        IEnumerable<IStackTraceLinesTransformer> linesTransformers,
+        IEnumerable<IStackTraceLineTransformer> lineTransformers
+    )
+        => StackTraceCleaner.CleanStackTrace
+        (
+            exception,
+            linesTransformers,
+            lineTransformers
+        );
 
     /// <summary>
     /// Transforms an exception's stack trace into a cleaned format with colorization for better visual distinction.
@@ -40,17 +55,10 @@ public static class ExceptionExtensions
     /// <returns>A colorized and cleaned stack trace with ANSI color codes or HTML spans for coloring.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="exception"/> is null.</exception>
     public static string GetColoredCleanStackTrace(this Exception exception)
-    {
-        IEnumerable<string> lines = exception.ToString()
-            .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
-
-        foreach (IStackTraceLinesTransformer transformer in TransformerCollections.StandardLinesTransformers)
-            lines = transformer.Apply(lines);
-
-        foreach (IStackTraceLineTransformer transformer in TransformerCollections.ColoredLineTransformers)
-            lines = lines.Select(line => transformer.Apply(line))
-                         .Where(line => line is not null)!;
-
-        return string.Join(Environment.NewLine, lines);
-    }
+        => StackTraceCleaner.CleanStackTrace
+            (
+                exception,
+                TransformerCollections.StandardLinesTransformers,
+                TransformerCollections.ColoredLineTransformers
+            );
 }

@@ -1,9 +1,15 @@
 ﻿using CleanStackTrace.Interfaces;
 
-namespace CleanStackTrace.Transformers;
+namespace CleanStackTrace.Transformers.Alterators;
 
-internal class IndentationTransformer : IStackTraceLinesTransformer
+/// <summary>
+/// Adds indentation to nested exception stack traces.
+/// </summary>
+public class IndentationTransformer : IStackTraceLinesTransformer
 {
+    /// <summary>
+    /// Applies progressive indentation to nested exception lines and their end markers.
+    /// </summary>
     public IEnumerable<string> Apply(IEnumerable<string> lines)
     {
         int indentLevel = 0;

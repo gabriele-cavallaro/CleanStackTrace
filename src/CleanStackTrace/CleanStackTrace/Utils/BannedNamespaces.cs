@@ -1,5 +1,9 @@
 namespace CleanStackTrace.Utils;
 
+/// <summary>
+/// Provides namespace filtering for stack trace cleaning.
+/// Contains predefined and customizable namespace exclusion lists.
+/// </summary>
 public static class BannedNamespaces
 {
     internal static readonly string[] BannedNamespacesList =
@@ -22,9 +26,4 @@ public static class BannedNamespaces
         if (!string.IsNullOrWhiteSpace(prefix) && !BannedNamespacesList.Contains(prefix) && !CustomBannedNamespacesList.Contains(prefix))
             CustomBannedNamespacesList.Add(prefix);
     }
-
-    internal static IEnumerable<string> RemoveCustomNamespacesStackTraceLines(this IEnumerable<string> lines)
-        => lines.Where(line
-            => !CustomBannedNamespacesList.Any(ns => line.Contains(ns, StringComparison.Ordinal)));
 }
-

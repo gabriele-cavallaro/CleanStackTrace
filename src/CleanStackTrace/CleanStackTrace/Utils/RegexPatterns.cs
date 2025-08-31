@@ -2,6 +2,10 @@
 
 namespace CleanStackTrace;
 
+/// <summary>
+/// Provides compiled regex patterns for stack trace processing.
+/// Contains optimized patterns for common stack trace elements.
+/// </summary>
 public static partial class RegexPatterns
 {
     [GeneratedRegex(@"in .*?:(line \d+)")]

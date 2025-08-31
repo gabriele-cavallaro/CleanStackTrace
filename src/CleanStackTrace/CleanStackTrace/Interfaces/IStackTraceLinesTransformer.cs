@@ -1,6 +1,10 @@
 ﻿namespace CleanStackTrace.Interfaces;
 
-internal interface IStackTraceLinesTransformer
+/// <summary>
+/// Transforms or filters multiple stack trace lines.
+/// Used to apply bulk operations on complete stack traces.
+/// </summary>
+public interface IStackTraceLinesTransformer
 {
     /// <summary>
     /// Applies the transformation or filter to all lines of stacktrace.

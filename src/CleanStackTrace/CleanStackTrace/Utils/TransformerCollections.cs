@@ -1,9 +1,11 @@
 ﻿using CleanStackTrace.Interfaces;
-using CleanStackTrace.Transformers;
+using CleanStackTrace.Transformers.Alterators;
+using CleanStackTrace.Transformers.Colorists;
+using CleanStackTrace.Transformers.Removers;
 
 namespace CleanStackTrace.Utils;
 
-internal static class TransformerCollections
+public static class TransformerCollections
 {
     public static readonly IReadOnlyList<IStackTraceLineTransformer> StandardLineTransformers =
         [
