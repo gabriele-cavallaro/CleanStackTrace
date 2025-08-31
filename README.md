@@ -71,7 +71,6 @@ CustomStackTraceException: A wrong situation
   ApplicationException: Error in the application.
     NullReferenceException: Object reference not set to an instance of an object.
     UserController.GetUser(Guid id) line 27
-    lambda_method4(Closure, Object)
     WebApplicationExtensions.AutoOptionsMiddleware() line 40
 ```
 
