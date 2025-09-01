@@ -34,7 +34,6 @@ public static class StackTraceCleaner
 
     /// <summary>
     /// Cleans and formats an exception's stack trace using provided transformers.
-    /// Converts exception to string and applies cleaning transformations.
     /// </summary>
     public static string CleanStackTrace
     (

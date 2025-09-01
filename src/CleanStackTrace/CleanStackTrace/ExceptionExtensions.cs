@@ -37,7 +37,7 @@ public static class ExceptionExtensions
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="exception"/> is null.</exception>
     public static string GetCleanStackTrace
     (
-        Exception exception,
+        this Exception exception,
         IEnumerable<IStackTraceLinesTransformer> linesTransformers,
         IEnumerable<IStackTraceLineTransformer> lineTransformers
     )

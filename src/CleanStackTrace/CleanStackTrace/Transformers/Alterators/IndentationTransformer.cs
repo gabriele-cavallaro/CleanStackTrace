@@ -14,19 +14,13 @@ public class IndentationTransformer : IStackTraceLinesTransformer
     {
         int indentLevel = 0;
 
+        string result;
         foreach (string line in lines)
         {
-            string result = line;
-
             if (line.Contains("---> ") || line.Contains("--- End"))
-            {
                 indentLevel += 2;
-                result = new string(' ', indentLevel) + line;
-            }
-            else
-            {
-                result = new string(' ', indentLevel) + line;
-            }
+
+            result = new string(' ', indentLevel) + line;
 
             yield return result;
         }
