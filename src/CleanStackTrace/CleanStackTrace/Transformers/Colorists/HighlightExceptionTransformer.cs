@@ -15,6 +15,5 @@ public class HighlightExceptionTransformer : IStackTraceLineTransformer
     /// Uses ANSI escape codes to make exceptions stand out.
     /// </summary>
     public string? Apply(string line)
-        => string.IsNullOrEmpty(line) ? line :
-            RegexPatterns.ExceptionName().Replace(line, $"{ColorStart}$1{ColorEnd}$2");
+        => RegexPatterns.ExceptionName().Replace(line, $"{ColorStart}$1{ColorEnd}$2");
 }

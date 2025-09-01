@@ -15,6 +15,5 @@ public class HighlightClassTransformer : IStackTraceLineTransformer
     /// Uses ANSI escape codes for terminal colorization.
     /// </summary>
     public string? Apply(string line)
-        => string.IsNullOrEmpty(line) ? line :
-            RegexPatterns.ClassName().Replace(line, $"{ColorStart}$1{ColorEnd}");
+        => RegexPatterns.ClassName().Replace(line, $"{ColorStart}$1{ColorEnd}");
 }

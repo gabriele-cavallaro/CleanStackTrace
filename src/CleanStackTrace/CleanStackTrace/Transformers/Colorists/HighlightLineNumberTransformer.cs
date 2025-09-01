@@ -15,6 +15,5 @@ public class HighlightLineNumberTransformer : IStackTraceLineTransformer
     /// Uses ANSI escape codes to emphasize method calls.
     /// </summary>
     public string? Apply(string line)
-        => string.IsNullOrEmpty(line) ? line :
-            RegexPatterns.LineNumber().Replace(line, $"{ColorStart}line $1{ColorEnd}");
+        => RegexPatterns.LineNumber().Replace(line, $"{ColorStart}line $1{ColorEnd}");
 }

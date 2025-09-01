@@ -24,7 +24,7 @@ public static partial class RegexPatterns
     public static partial Regex ClassName();
 
     [GeneratedRegex(@"\.(\w+\(.*?\))")]
-    public static partial Regex FunctionFirm();
+    public static partial Regex FunctionSignature();
 
     [GeneratedRegex(@"\.<>c\.<<(\w+)>b__\d+_\d+>d\.(\w+)...(line \d+)?")]
     public static partial Regex GeneratedMethodNames();

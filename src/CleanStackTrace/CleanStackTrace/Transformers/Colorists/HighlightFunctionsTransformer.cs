@@ -15,6 +15,5 @@ public class HighlightFunctionsTransformer : IStackTraceLineTransformer
     /// Uses ANSI escape codes to emphasize method calls.
     /// </summary>
     public string? Apply(string line)
-        => string.IsNullOrEmpty(line) ? line :
-            RegexPatterns.FunctionFirm().Replace(line, $".{ColorStart}$1{ColorEnd}");
+        => RegexPatterns.FunctionSignature().Replace(line, $".{ColorStart}$1{ColorEnd}");
 }
