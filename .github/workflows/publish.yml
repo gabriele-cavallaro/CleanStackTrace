@@ -40,6 +40,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+    needs: Test
+    if: success()
 
     steps:
     - uses: actions/checkout@v4
