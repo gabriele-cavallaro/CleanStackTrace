@@ -27,7 +27,7 @@ jobs:
       
     - name: Check Test Results
       run: |
-        if dotnet test ./tests/CleanStackTrace.Tests/Tests/CleanStackTrace.Tests.csproj --no-build --verbosity quiet; then
+        if dotnet test ./tests/CleanStackTrace.Tests/Tests/CleanStackTrace.Tests.csproj --configuration Release --verbosity quiet; then
           echo "✅ All tests passed!"
         else
           echo "❌ Tests failed! Aborting release."
