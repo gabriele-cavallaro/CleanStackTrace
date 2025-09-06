@@ -6,7 +6,36 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+        
+    - name: Restore
+      run: dotnet restore ./tests/CleanStackTrace.Tests/Tests/CleanStackTrace.Tests.csproj
+      
+    - name: Build
+      run: dotnet build ./tests/CleanStackTrace.Tests/Tests/CleanStackTrace.Tests.csproj --configuration Release --no-restore
+      
+    - name: Test
+      run: dotnet test ./tests/CleanStackTrace.Tests/Tests/CleanStackTrace.Tests.csproj --configuration Release --no-build --verbosity normal
+      
+    - name: Check Test Results
+      run: |
+        # Controlla che tutti i test siano passati
+        if dotnet test --no-build --verbosity quiet; then
+          echo "✅ All tests passed!"
+        else
+          echo "❌ Tests failed! Aborting release."
+          exit 1
+        fi
+
+  Publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read

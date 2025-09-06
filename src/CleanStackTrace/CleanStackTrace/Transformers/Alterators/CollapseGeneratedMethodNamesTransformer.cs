@@ -13,5 +13,13 @@ public class CollapseGeneratedMethodNamesTransformer : IStackTraceLineTransforme
     /// Removes compiler-specific noise from stack trace lines.
     /// </summary>
     public string? Apply(string line)
-        => RegexPatterns.GeneratedMethodNames().Replace(line, ".$1() $3");
+    {
+        line = RegexPatterns.AsyncStateMachine().Replace(line, "$1.$2$3");
+
+        line = RegexPatterns.DisplayClassLambda().Replace(line, "$1$3$4");
+
+        line = RegexPatterns.AnomalousGeneratedMethod().Replace(line, ".$1() $3");
+
+        return line;
+    }
 }

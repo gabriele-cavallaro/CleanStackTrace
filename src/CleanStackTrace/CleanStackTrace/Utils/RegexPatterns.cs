@@ -8,27 +8,33 @@ namespace CleanStackTrace;
 /// </summary>
 public static partial class RegexPatterns
 {
-    [GeneratedRegex(@"in .*?:(line \d+)")]
+    [GeneratedRegex(@"in .*?:(line \d+)", RegexOptions.Compiled)]
     public static partial Regex FilePath();
 
-    [GeneratedRegex(@"(?:[\w\.]+)\.(\w+\.\w+\(.*\))")]
+    [GeneratedRegex(@"(?:[\w\.]+)\.(\w+\.\w+\(.*\))", RegexOptions.Compiled)]
     public static partial Regex NamespaceMethod();
 
-    [GeneratedRegex(@"([\w\.]+)\.(\w+Exception:.*)")]
+    [GeneratedRegex(@"([\w\.]+)\.(\w+Exception:.*)", RegexOptions.Compiled)]
     public static partial Regex ExceptionType();
 
-    [GeneratedRegex(@"([\w\.]+Exception)(:.*)")]
+    [GeneratedRegex(@"([\w\.]+Exception)(:.*)", RegexOptions.Compiled)]
     public static partial Regex ExceptionName();
 
-    [GeneratedRegex(@"\b([A-Z]\w+)(?=\.)")]
+    [GeneratedRegex(@"\b([A-Z]\w+)(?=\.)", RegexOptions.Compiled)]
     public static partial Regex ClassName();
 
-    [GeneratedRegex(@"\.(\w+\(.*?\))")]
+    [GeneratedRegex(@"\.(\w+\(.*?\))", RegexOptions.Compiled)]
     public static partial Regex FunctionSignature();
 
-    [GeneratedRegex(@"\.<>c\.<<(\w+)>b__\d+_\d+>d\.(\w+)...(line \d+)?")]
-    public static partial Regex GeneratedMethodNames();
+    [GeneratedRegex(@"([\w\s\.]+)[.+].*<(\w+)>.+MoveNext(.+)", RegexOptions.Compiled)]
+    public static partial Regex AsyncStateMachine();
 
-    [GeneratedRegex(@"\bline\s+(\d+)\b")]
+    [GeneratedRegex(@"(.+\.\w+\.)(<>\w*\.)<(\w*)>\w*\w*(\(.*\))", RegexOptions.Compiled)]
+    public static partial Regex DisplayClassLambda();
+
+    [GeneratedRegex(@"\.<>c\.<<(\w+)>b__\d+_\d+>d\.(\w+)...(line \d+)?", RegexOptions.Compiled)]
+    public static partial Regex AnomalousGeneratedMethod();
+
+    [GeneratedRegex(@"\bline\s+(\d+)\b", RegexOptions.Compiled)]
     public static partial Regex LineNumber();
 }
