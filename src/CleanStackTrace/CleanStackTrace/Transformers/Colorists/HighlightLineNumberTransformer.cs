@@ -7,8 +7,16 @@ namespace CleanStackTrace.Transformers.Colorists;
 /// </summary>
 public class HighlightLineNumberTransformer : IStackTraceLineTransformer
 {
-    private const string ColorStart = "\u001b[33m";
-    private const string ColorEnd = "\u001b[0m";
+    /// <summary>
+    /// ANSI escape sequence to start line number color highlighting.
+    /// Default: yellow (\u001b[33m).
+    /// </summary>
+    public string ColorStart { get; init; } = "\u001b[33m";
+
+    /// <summary>
+    /// ANSI escape sequence to reset highlighting.
+    /// </summary>
+    public string ColorEnd { get; init; } = "\u001b[0m";
 
     /// <summary>
     /// Applies yellow color highlighting to line number.

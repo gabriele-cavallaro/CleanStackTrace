@@ -17,13 +17,13 @@ public static partial class RegexPatterns
     [GeneratedRegex(@"([\w\.]+)\.(\w+Exception:.*)", RegexOptions.Compiled)]
     public static partial Regex ExceptionType();
 
-    [GeneratedRegex(@"([\w\.]+Exception)(:.*)", RegexOptions.Compiled)]
+    [GeneratedRegex(@"([\w\.]+Exception)(.*)", RegexOptions.Compiled)]
     public static partial Regex ExceptionName();
 
-    [GeneratedRegex(@"\b([A-Z]\w+)(?=\.)", RegexOptions.Compiled)]
+    [GeneratedRegex(@"((?:[\w]+\.)*)([A-Z][\w]+)(?=\.\w+\()", RegexOptions.Compiled)]
     public static partial Regex ClassName();
 
-    [GeneratedRegex(@"\.(\w+\(.*?\))", RegexOptions.Compiled)]
+    [GeneratedRegex(@"(?<dot>\.)?(?<method>[A-Za-z_]\w*\(.*?\))", RegexOptions.Compiled)]
     public static partial Regex FunctionSignature();
 
     [GeneratedRegex(@"([\w\s\.]+)[.+].*<(\w+)>.+MoveNext(.+)", RegexOptions.Compiled)]

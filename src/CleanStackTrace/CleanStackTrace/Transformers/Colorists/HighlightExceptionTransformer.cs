@@ -7,8 +7,16 @@ namespace CleanStackTrace.Transformers.Colorists;
 /// </summary>
 public class HighlightExceptionTransformer : IStackTraceLineTransformer
 {
-    private const string ColorStart = "\u001b[31m";
-    private const string ColorEnd = "\u001b[0m";
+    /// <summary>
+    /// ANSI escape sequence to start exception name highlighting.
+    /// Default: red (\u001b[31m).
+    /// </summary>
+    public string ColorStart { get; init; } = "\u001b[31m";
+
+    /// <summary>
+    /// ANSI escape sequence to reset highlighting.
+    /// </summary>
+    public string ColorEnd { get; init; } = "\u001b[0m";
 
     /// <summary>
     /// Applies red color highlighting to exception type names.

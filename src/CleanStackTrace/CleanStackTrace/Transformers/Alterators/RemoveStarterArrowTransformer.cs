@@ -8,7 +8,7 @@ namespace CleanStackTrace.Transformers.Alterators;
 public class RemoveStarterArrowTransformer : IStackTraceLineTransformer
 {
     /// <summary>
-    /// Strips the "---> " prefix from inner exception markers.
+    /// Strips the " ---> " prefix from inner exception markers.
     /// </summary>
     public string? Apply(string line)
         => line.Replace(" ---> ", "");
