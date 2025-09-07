@@ -32,7 +32,7 @@ public class HighlightExceptionTransformerTests
         "SomeClass.SomeMethod() line 42",
         "SomeClass.SomeMethod() line 42"
     )]
-    public void Apply_ShouldHighlightExceptionNames(string input, string expected)
+    public void Apply_Should_HighlightExceptionNames(string input, string expected)
     {
         expected = expected.Replace("{ColorStart}", _sut.ColorStart)
                            .Replace("{ColorEnd}", _sut.ColorEnd);

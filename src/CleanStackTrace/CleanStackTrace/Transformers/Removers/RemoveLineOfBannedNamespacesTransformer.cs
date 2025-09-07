@@ -1,4 +1,5 @@
-﻿using CleanStackTrace.Interfaces;
+﻿using System.Text.RegularExpressions;
+using CleanStackTrace.Interfaces;
 using CleanStackTrace.Utils;
 
 namespace CleanStackTrace.Transformers.Removers;
@@ -14,6 +15,16 @@ public class RemoveLineOfBannedNamespacesTransformer : IStackTraceLineTransforme
     /// Removes framework internals and system namespace clutter.
     /// </summary>
     public string? Apply(string line)
-        => BannedNamespaces.BannedNamespacesList.Any(ns => line.Contains(ns, StringComparison.Ordinal))
-            ? null : line;
+    {
+        Match match = RegexPatterns.NamespaceName().Match(line);
+
+        if (match.Success && match.Groups[1].Captures.Count > 0)
+        {
+            string firstCapture = match.Groups[1].Captures[0].Value;
+            if (BannedNamespaces.BannedNamespacesList.Any(ns => firstCapture.Equals(ns, StringComparison.Ordinal)))
+                return null;
+        }
+
+        return line;
+    }
 }

@@ -32,7 +32,7 @@ public class SimplifyExceptionTypesTransformerTests
         "   System.ArgumentException: Bad arg",
         "   ArgumentException: Bad arg"
     )]
-    public void Apply_ShouldSimplifyExceptionTypeNames(string input, string expected)
+    public void Apply_Should_SimplifyExceptionTypeNames(string input, string expected)
     {
         string? result = _sut.Apply(input);
 

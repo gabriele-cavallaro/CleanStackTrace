@@ -13,7 +13,7 @@ public class RemoveStarterArrowTransformerTests
     [InlineData(">Something that should not be touched!", ">Something that should not be touched!")]
     [InlineData("   ", "   ")]
     [InlineData("", "")]
-    public void Apply_ShouldRemoveStarterArrow(string input, string expected)
+    public void Apply_Should_RemoveStarterArrow(string input, string expected)
     {
         string? result = _sut.Apply(input);
 

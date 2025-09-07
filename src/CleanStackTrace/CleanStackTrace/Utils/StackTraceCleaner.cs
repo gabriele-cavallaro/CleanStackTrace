@@ -12,6 +12,8 @@ public static class StackTraceCleaner
     /// Cleans and formats a stack trace string using provided transformers.
     /// Applies line and multiline transformations in sequence.
     /// </summary>
+    /// <exception cref="ArgumentNullException">If stackTrace is null</exception>
+    /// <returns>Cleaned stack trace string</returns>
     public static string CleanStackTrace
     (
         string stackTrace,
@@ -19,6 +21,8 @@ public static class StackTraceCleaner
         IEnumerable<IStackTraceLineTransformer> lineTransformers
     )
     {
+        ArgumentNullException.ThrowIfNull(stackTrace);
+
         IEnumerable<string> lines = stackTrace
             .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
@@ -27,7 +31,7 @@ public static class StackTraceCleaner
 
         foreach (IStackTraceLineTransformer transformer in lineTransformers)
             lines = lines.Select(line => transformer.Apply(line))
-                         .Where(line => line is not null)!;
+                         .Where(line => !string.IsNullOrEmpty(line))!;
 
         return string.Join(Environment.NewLine, lines);
     }
@@ -35,6 +39,8 @@ public static class StackTraceCleaner
     /// <summary>
     /// Cleans and formats an exception's stack trace using provided transformers.
     /// </summary>
+    /// <exception cref="ArgumentNullException">If stackTrace is null</exception>
+    /// <returns>Cleaned stack trace string</returns>
     public static string CleanStackTrace
     (
         Exception exception,

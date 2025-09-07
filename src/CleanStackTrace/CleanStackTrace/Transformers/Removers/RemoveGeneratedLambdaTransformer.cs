@@ -12,5 +12,5 @@ public class RemoveGeneratedLambdaTransformer : IStackTraceLineTransformer
     /// Removes lines containing lambda compiler-generated methods.
     /// </summary>
     public string? Apply(string line)
-        => line.Contains("lambda_", StringComparison.Ordinal) ? null : line;
+        => RegexPatterns.LambdaGeneratedRegex().IsMatch(line) ? null : line;
 }

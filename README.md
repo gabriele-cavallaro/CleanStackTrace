@@ -12,7 +12,8 @@ By reducing long namespaces, compiler-generated method names, and unnecessary no
 - 🧹 clean up compiler-generated artifacts (e.g. `<>c.<...>b__...`) that pollute stack traces;  
 - 🔍 keep useful information like parameters and line numbers;  
 - 🛠 works seamlessly with exceptions and inner exceptions;  
-- 🔧 easy to plug into existing logging systems.  
+- 🔧 easy to plug into existing logging systems;  
+- 🛡 over 90 unit tests to ensure stable behavior.
 
 ---
 

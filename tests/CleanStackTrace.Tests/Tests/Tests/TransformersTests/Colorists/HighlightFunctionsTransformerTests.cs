@@ -42,7 +42,7 @@ public class HighlightFunctionsTransformerTests
         "NullReferenceException: Object reference not set",
         "NullReferenceException: Object reference not set"
     )]
-    public void Apply_ShouldHighlightClassNames(string input, string expected)
+    public void Apply_Should_HighlightClassNames(string input, string expected)
     {
         expected = expected.Replace("{ColorStart}", _sut.ColorStart)
                            .Replace("{ColorEnd}", _sut.ColorEnd);

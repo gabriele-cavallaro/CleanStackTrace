@@ -43,6 +43,4 @@ public class AspnetStackTraces
             at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
             """;
     }
-
-
 }

@@ -1,7 +1,7 @@
 ﻿namespace CleanStackTrace.Demo;
 
 public class AWrongClass
-{    
+{
     public void DoSomething()
     {
         Method1();

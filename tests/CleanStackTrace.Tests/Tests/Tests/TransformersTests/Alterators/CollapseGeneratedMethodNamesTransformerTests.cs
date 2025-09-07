@@ -47,7 +47,7 @@ public class CollapseGeneratedMethodNamesTransformerTests
         "at CleanStackTrace.Program.Main(String[] args)",
         "at CleanStackTrace.Program.Main(String[] args)"
     )]
-    public void Apply_ShouldCollapseGeneratedMethodNames(string input, string expected)
+    public void Apply_Should_CollapseGeneratedMethodNames(string input, string expected)
     {
         string? result = _sut.Apply(input);
 

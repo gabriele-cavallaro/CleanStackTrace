@@ -73,7 +73,7 @@ public class IndentationTransformerTests
 
     [Theory]
     [MemberData(nameof(GetIndentationCases))]
-    public void Apply_ShouldIndentCorrectly(IEnumerable<string> input, IEnumerable<string> expected)
+    public void Apply_Should_IndentCorrectly(IEnumerable<string> input, IEnumerable<string> expected)
     {
         IEnumerable<string> result = _sut.Apply(input);
 

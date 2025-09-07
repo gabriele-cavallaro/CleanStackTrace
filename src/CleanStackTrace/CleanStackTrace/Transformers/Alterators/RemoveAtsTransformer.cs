@@ -1,6 +1,6 @@
 ﻿using CleanStackTrace.Interfaces;
 
-namespace CleanStackTrace.Transformers.Removers;
+namespace CleanStackTrace.Transformers.Alterators;
 
 /// <summary>
 /// Removes the "at " prefix from stack trace lines.
@@ -11,5 +11,5 @@ public class RemoveAtsTransformer : IStackTraceLineTransformer
     /// Strips the "at " prefix from method location lines.
     /// </summary>
     public string? Apply(string line)
-        => line.Replace("at ", "");
+        => RegexPatterns.LeadingAtRegex().Replace(line, "$1");
 }
