@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using CleanStackTrace.Interfaces;
+﻿using CleanStackTrace.Interfaces;
 using CleanStackTrace.Tests.Utils;
 using CleanStackTrace.Transformers.Removers;
 using CleanStackTrace.Utils;

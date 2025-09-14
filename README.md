@@ -13,7 +13,7 @@ By reducing long namespaces, compiler-generated method names, and unnecessary no
 - 🔍 keep useful information like parameters and line numbers;  
 - 🛠 works seamlessly with exceptions and inner exceptions;  
 - 🔧 easy to plug into existing logging systems;  
-- 🛡 over 90 unit tests to ensure stable behavior.
+- 🛡 over 100 unit tests to ensure stable behavior.
 
 ---
 
@@ -28,6 +28,8 @@ dotnet add package
 ---
 
 ## 🔧 Usage
+
+### How use `GetCleanStackTrace()`
 ```c#
 try
 {
@@ -75,6 +77,8 @@ CustomStackTraceException: A wrong situation
     WebApplicationExtensions.AutoOptionsMiddleware() line 40
 ```
 
+### How use `GetColoredCleanStackTrace()`
+
 You can also obtain the colored version using the method `GetColoredCleanStackTrace()`, in this version:
 
  - Exceptions are red;
@@ -85,6 +89,13 @@ You can also obtain the colored version using the method `GetColoredCleanStackTr
 ![alt text](https://raw.githubusercontent.com/gabriele-cavallaro/CleanStackTrace/refs/heads/main/images/example-1.png "Title")
 
 You can also define your own transformers with the overload `GetColoredCleanStackTrace(linestransformers, linetransformers)`. See the following section for more information.
+
+### How use `GetSingleLineStackTrace()`
+
+The method `GetSingleLineStackTrace()` produces a single sentence (without newlines chars) that is useful when you want to insert the stack trace and exception message into an entity value for logging or reporting purposes:
+```sh
+Encountered a CustomStackTraceException with message "A wrong situation" while executing UserController.GetUser(Guid id) at line 27.
+```
 
 ---
 

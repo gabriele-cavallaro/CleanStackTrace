@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
-		<Version>1.1.4</Version>
+		<Version>1.2.4</Version>
 		<PackageId>CleanStackTrace</PackageId>
 		<Authors>Gabriele Cavallaro</Authors>
 		<Description>A small utility library for cleaning and formatting .NET stack traces. It removes noise from framework internals and provides a cleaner output for logging and error messages. Ideal for debugging and error monitoring.</Description>

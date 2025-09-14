@@ -26,6 +26,9 @@ public static partial class RegexPatterns
     [GeneratedRegex(@"((?:[\w]+\.)*)([A-Z][\w]+)(?=\.\w+\()", RegexOptions.Compiled | RegexOptions.CultureInvariant)]
     public static partial Regex ClassName();
 
+    [GeneratedRegex(@"^(?<method>[^(]+\(.*?\))(?: line (?<line>\d+))?$", RegexOptions.Compiled)]
+    public static partial Regex ClassMethodNameAndLineNumber();
+
     [GeneratedRegex(@"(?<dot>\.)?(?<method>[A-Za-z_]\w*\(.*?\))", RegexOptions.Compiled)]
     public static partial Regex FunctionSignature();
 

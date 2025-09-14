@@ -27,6 +27,8 @@ Console.WriteLine(testException);
 Console.WriteLine();
 Console.WriteLine("=== Cleaned StackTrace ===");
 Console.WriteLine(testException.GetCleanStackTrace());
+Console.WriteLine("=== Single Line StackTrace ===");
+Console.WriteLine(testException.GetSingleLineStackTrace());
 
 Console.WriteLine();
 Console.WriteLine("=== Third Example ===");

@@ -1,4 +1,5 @@
-﻿using CleanStackTrace.Interfaces;
+﻿using System.Text.RegularExpressions;
+using CleanStackTrace.Interfaces;
 using CleanStackTrace.Utils;
 
 namespace CleanStackTrace;
@@ -61,4 +62,31 @@ public static class ExceptionExtensions
                 TransformerCollections.StandardLinesTransformers,
                 TransformerCollections.ColoredLineTransformers
             );
+
+    public static string GetSingleLineStackTrace(this Exception ex)
+    {
+        string cleanStack = ex.GetCleanStackTrace();
+
+        string[] lines = cleanStack
+            .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+
+        string exceptionType = ex.GetType().Name;
+        string message = ex.Message;
+
+        string? firstFrame = lines
+            .Skip(1)
+            .FirstOrDefault(l => !l.Contains("Exception"));
+
+        if (firstFrame is null)
+            return $"Encountered a {exceptionType} with message \"{message}\".";
+
+        Match match = RegexPatterns.ClassMethodNameAndLineNumber().Match(firstFrame);
+        if (!match.Success)
+            return $"Encountered a {exceptionType} with message \"{message}\" while executing {firstFrame}.";
+
+        string method = match.Groups["method"].Value.TrimStart();
+        string line = match.Groups["line"].Success ? $" at line {match.Groups["line"].Value}" : string.Empty;
+
+        return $"Encountered a {exceptionType} with message \"{message}\" while executing {method}{line}.";
+    }
 }
