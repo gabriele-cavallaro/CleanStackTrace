@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../../src/CleanStackTrace/CleanStackTrace/CleanStackTrace.csproj" />
+  <Project Path="Tests/CleanStackTrace.Tests.csproj" />
+</Solution>
