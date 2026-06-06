@@ -14,7 +14,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 10.0.x
         
     - name: Restore
       run: dotnet restore ./tests/CleanStackTrace.Tests/Tests/CleanStackTrace.Tests.csproj
@@ -48,7 +48,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 10.0.x
         
     - name: Restore dependencies
       run: dotnet restore ./src/CleanStackTrace/CleanStackTrace/CleanStackTrace.csproj
