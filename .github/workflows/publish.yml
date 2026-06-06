@@ -9,10 +9,10 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 10.0.x
         
@@ -21,13 +21,10 @@ jobs:
       
     - name: Build
       run: dotnet build ./tests/CleanStackTrace.Tests/Tests/CleanStackTrace.Tests.csproj --configuration Release --no-restore
-      
-    - name: Test
-      run: dotnet test ./tests/CleanStackTrace.Tests/Tests/CleanStackTrace.Tests.csproj --configuration Release --no-build --verbosity normal
-      
+            
     - name: Check Test Results
       run: |
-        if dotnet test ./tests/CleanStackTrace.Tests/Tests/CleanStackTrace.Tests.csproj --configuration Release --verbosity quiet; then
+        if dotnet test ./tests/CleanStackTrace.Tests/Tests/CleanStackTrace.Tests.csproj --configuration Release --no-build --verbosity normal; then
           echo "✅ All tests passed!"
         else
           echo "❌ Tests failed! Aborting release."
@@ -43,10 +40,10 @@ jobs:
     if: success()
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 10.0.x
         
